@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="countryDetailViewState"
+            type="com.jurcikova.ivet.countries.mvi.ui.countryDetail.CountryDetailViewState" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            app:layoutDescription="@xml/collapsing_toolbar"
+            app:showPaths="true">
+
+            <ImageView
+                android:id="@+id/iv_flag"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:svg="@{countryDetailViewState.country.flag}"
+                tools:src="@drawable/world" />
+
+            <ImageView
+                android:id="@+id/iv_background"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="24dp"
+                android:text="@{countryDetailViewState.country.name}"
+                android:textAppearance="@style/TextAppearance.AppTheme.ScreenTitle"
+                tools:text="Country" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{countryDetailViewState.country.isFavorite ? @drawable/ic_favorite : @drawable/ic_favorite_border}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_properties"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:padding="@dimen/space_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_flag"
+                app:list="@{countryDetailViewState.country.countryProperties}"
+                tools:listitem="@layout/item_country_property" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

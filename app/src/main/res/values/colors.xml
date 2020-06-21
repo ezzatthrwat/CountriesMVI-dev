@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="search_toolbar_background">#B0BEC5</color>
+    <color name="search_statusbar_background">#90A4AE</color>
+    <color name="toolbar_text_color">#FFFFFF</color>
+</resources>
